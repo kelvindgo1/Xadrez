@@ -4,7 +4,7 @@ using System.Text;
 
 namespace tabuleiro
 {
-    public class Tabuleiro
+    class Tabuleiro
     {
         public int Linhas { get; set; }
         public int Colunas { get; set; }

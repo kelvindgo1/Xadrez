@@ -14,6 +14,12 @@ namespace tabuleiro
             this.Linha = Linha;
         }
 
+        public void definirValores(int Linha, int Coluna)
+        {
+            this.Coluna = Coluna;
+            this.Linha = Linha;
+        }
+
         public override string ToString()
         {
             return Linha + "," + Coluna;

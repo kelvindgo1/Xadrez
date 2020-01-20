@@ -5,7 +5,7 @@ using tabuleiro;
 
 namespace tabuleiro
 {
-    public class Peca
+    abstract class Peca
     {
         public Posicao posicao { get; set; }
         public Cor cor { get; protected set; }
@@ -25,6 +25,9 @@ namespace tabuleiro
         {
             QtdMovimentos++;
         }
+
+        public abstract bool[,] movimentosPossiveis();
+        
 
     }
 }
