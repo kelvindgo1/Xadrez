@@ -9,16 +9,23 @@ namespace Xadrez
     {
         public static void imprimirPartida(PartidaDeXadrez partida)
         {
-            ImprimirTabuleiro(partida.tab); 
+            ImprimirTabuleiro(partida.tab);
             imprimirPecasCapturadas(partida);
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno);
-            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
-            if (partida.xeque)
+            if (!partida.terminada)
             {
-                Console.WriteLine("XEQUE!");
+                Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                if (partida.xeque)
+                {
+                    Console.WriteLine("XEQUE!");
+                }
             }
-
+            else
+            {
+                Console.WriteLine("XEQUEMATE!!");
+                Console.WriteLine("Vencedor: " + partida.jogadorAtual);
+            }
         }
 
         public static void imprimirPecasCapturadas(PartidaDeXadrez partida)
@@ -38,7 +45,7 @@ namespace Xadrez
         public static void imprimirConjunto(HashSet<Peca> conjunto)
         {
             Console.Write("[");
-            foreach(Peca x in conjunto)
+            foreach (Peca x in conjunto)
             {
                 Console.Write(x + " ");
             }
@@ -51,8 +58,8 @@ namespace Xadrez
             {
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
-                {                  
-                imprimirPeca(tab.peca(i, j));                     
+                {
+                    imprimirPeca(tab.peca(i, j));
                 }
                 Console.WriteLine();
             }
@@ -68,7 +75,7 @@ namespace Xadrez
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if(posicoesPossiveis[i, j])
+                    if (posicoesPossiveis[i, j])
                     {
                         Console.BackgroundColor = fundoAlterado;
                     }
@@ -95,13 +102,13 @@ namespace Xadrez
 
         public static void imprimirPeca(Peca peca)
         {
-            if(peca == null)
+            if (peca == null)
             {
                 Console.Write("- ");
             }
-            else 
+            else
             {
-                if(peca.cor == Cor.Branca)
+                if (peca.cor == Cor.Branca)
                 {
                     Console.Write(peca);
                 }
